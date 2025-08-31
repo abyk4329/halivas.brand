@@ -50,8 +50,12 @@ export default function GalleryPage() {
       {/* Header */}
       <div className="bg-gradient-to-b from-[#8B5A3C] to-[#A67C52] text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">גלריה</h1>
-          <p className="text-xl opacity-90">הפרויקטים האחרונים שלנו</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">גלריה דינמית</h1>
+          <p className="text-xl opacity-90 mb-6">הפרויקטים האחרונים שלנו מאינסטגרם</p>
+          <p className="text-lg opacity-80 max-w-3xl mx-auto">
+            כאן תוכלו לראות את העבודות האחרונות שלנו - מטבחים מותאמים אישית, עיצובי פנים יוקרתיים ואדריכלות מודרנית.
+            הגלריה מתעדכנת אוטומטית עם כל פוסט חדש באינסטגרם שלנו.
+          </p>
         </div>
       </div>
 

@@ -22,8 +22,8 @@ export async function GET() {
 
     // Filter only images
     const images = data.data
-      .filter((item: any) => item.media_type === 'IMAGE')
-      .map((item: any) => ({
+      .filter((item: { media_type: string }) => item.media_type === 'IMAGE')
+      .map((item: { id: string; media_url: string; permalink: string; caption?: string; timestamp: string }) => ({
         id: item.id,
         url: item.media_url,
         permalink: item.permalink,

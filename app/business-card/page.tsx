@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 export default function BusinessCard() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   interface BeforeInstallPromptEvent extends Event {
     prompt(): Promise<void>;
@@ -57,6 +56,10 @@ export default function BusinessCard() {
           <p className="text-xl text-foreground mb-10 font-light leading-relaxed">
             מומחה באדריכלות, עיצוב פנים וייצור מטבחים מותאמים אישית
           </p>
+          <p className="text-lg text-foreground mb-8 font-light leading-relaxed max-w-2xl mx-auto">
+            עם ניסיון של למעלה מ-15 שנה בתחום, אני מתמחה ביצירת חללים יפים ופונקציונליים שמשקפים את האישיות והצרכים של כל לקוח.
+            מהתכנון הראשוני ועד למימוש הסופי - אני כאן כדי להפוך את החלום שלכם למציאות.
+          </p>
           <div className="flex justify-center mb-8">
             <a
               href="/gallery"
@@ -99,21 +102,24 @@ export default function BusinessCard() {
           </h2>
           <div className="grid md:grid-cols-3 gap-12">
             <div className="card text-center">
-                            <h3 className="text-2xl font-medium text-ink mb-6">אדריכלות</h3>
+              <h3 className="text-2xl font-medium text-ink mb-6">אדריכלות</h3>
               <p className="text-foreground leading-relaxed">
                 תכנון אדריכלי מקצועי לבתים ומבנים, עם דגש על פונקציונליות ואסתטיקה מודרנית.
+                מתכנן חללים שמשלבים בין יופי, נוחות ויעילות מקסימלית.
               </p>
             </div>
             <div className="card text-center">
-                            <h3 className="text-2xl font-medium text-ink mb-6">עיצוב פנים</h3>
+              <h3 className="text-2xl font-medium text-ink mb-6">עיצוב פנים</h3>
               <p className="text-foreground leading-relaxed">
-                עיצוב חללים פנימיים יפים ומותאמים אישית לכל חדר בבית, עם סגנון מינימליסטי.
+                עיצוב חללים פנימיים יפים ומותאמים אישית לכל חדר בבית, עם סגנון מינימליסטי ואלגנטי.
+                יוצר אווירה הרמונית שמשקפת את הטעם האישי שלכם.
               </p>
             </div>
             <div className="card text-center">
-                            <h3 className="text-2xl font-medium text-ink mb-6">ייצור מטבחים</h3>
+              <h3 className="text-2xl font-medium text-ink mb-6">ייצור מטבחים</h3>
               <p className="text-foreground leading-relaxed">
                 מטבחים מותאמים אישית באיכות גבוהה, עם חומרים מתקדמים ועיצוב מודרני ונקי.
+                משלב טכנולוגיה מתקדמת עם עיצוב קלאסי וזמני.
               </p>
             </div>
           </div>
