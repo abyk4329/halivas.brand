@@ -5,7 +5,7 @@
   "start_url": "/business-card",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#4299E1",
+  "theme_color": "#8B5A3C",
   "orientation": "portrait",
   "scope": "/",
   "lang": "he",
@@ -19,11 +19,27 @@
     },
     {
       "src": "/halivas-logo.png",
-      "sizes": "512x512", 
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
   "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "גלריה",
+      "short_name": "גלריה",
+      "description": "צפה בגלריה הדינמית",
+      "url": "/gallery",
+      "icons": [{ "src": "/halivas-logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "צור קשר",
+      "short_name": "צור קשר",
+      "description": "פרטי התקשרות ויצירת קשר",
+      "url": "/business-card#contact",
+      "icons": [{ "src": "/halivas-logo.png", "sizes": "96x96" }]
+    }
+  ],
   "screenshots": []
 }

@@ -23,7 +23,34 @@ export default function BusinessCard() {
     };
 
     window.addEventListener('beforeinstallprompt', handler as EventListener);
-    
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+            // Check for updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // New content is available, notify user
+                    if (confirm('יש גרסה חדשה זמינה! האם ברצונך לרענן את הדף?')) {
+                      window.location.reload();
+                    }
+                  }
+                });
+              }
+            });
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+
     return () => window.removeEventListener('beforeinstallprompt', handler as EventListener);
   }, []);
 
@@ -37,6 +64,11 @@ export default function BusinessCard() {
       setDeferredPrompt(null);
       setShowInstallButton(false);
     }
+  };
+
+  const handleRefresh = () => {
+    // Force refresh to get latest version
+    window.location.reload();
   };
   return (
     <div className="min-h-screen bg-background">
@@ -154,6 +186,12 @@ export default function BusinessCard() {
           </div>
           
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 flex-wrap">
+            <button
+              onClick={handleRefresh}
+              className="bg-gray-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+            >
+              רענן דף
+            </button>
             {showInstallButton && (
               <button
                 onClick={handleInstallClick}
