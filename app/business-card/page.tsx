@@ -1,8 +1,35 @@
 'use client';
 
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function BusinessCard() {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showInstallButton, setShowInstallButton] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: any) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallButton(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handler);
+    
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null);
+      setShowInstallButton(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-blue-50">
       {/* Hero Section */}
@@ -86,6 +113,14 @@ export default function BusinessCard() {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
+            {showInstallButton && (
+              <button
+                onClick={handleInstallClick}
+                className="bg-green-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              >
+                📱 התקן כאפליקציה
+              </button>
+            )}
             <a
               href="tel:0544525927"
               className="bg-brand text-on-dark px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
