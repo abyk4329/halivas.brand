@@ -34,10 +34,17 @@
       "icons": [{ "src": "/halivas-logo.png", "sizes": "96x96" }]
     },
     {
-      "name": "צור קשר",
-      "short_name": "צור קשר",
-      "description": "פרטי התקשרות ויצירת קשר",
-      "url": "/business-card#contact",
+      "name": "אזור לקוחות",
+      "short_name": "לקוחות",
+      "description": "התחברות לאזור הלקוחות",
+      "url": "/client-login",
+      "icons": [{ "src": "/halivas-logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "ניהול לקוחות",
+      "short_name": "ניהול",
+      "description": "ניהול מסד הלקוחות",
+      "url": "/admin-clients",
       "icons": [{ "src": "/halivas-logo.png", "sizes": "96x96" }]
     }
   ],

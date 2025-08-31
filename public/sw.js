@@ -1,9 +1,13 @@
-const CACHE_NAME = 'halivas-business-card-v2';
+const CACHE_NAME = 'halivas-business-card-v3';
 const urlsToCache = [
   '/business-card',
   '/gallery',
+  '/client-login',
+  '/client-dashboard',
+  '/admin-clients',
   '/api/vcard',
   '/api/instagram',
+  '/api/clients',
   '/halivas-logo.png',
   '/manifest.json',
   '/'

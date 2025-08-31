@@ -99,6 +99,18 @@ export default function BusinessCard() {
             >
               צפה בגלריה שלנו
             </a>
+            <a
+              href="/client-login"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 mr-4 flex items-center gap-2"
+            >
+              👤 אזור לקוחות
+            </a>
+            <a
+              href="/admin-clients"
+              className="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+            >
+              ⚙️ ניהול לקוחות
+            </a>
           </div>
           <div className="flex justify-center flex-wrap gap-6">
             <span className="text-foreground font-medium tracking-wide">אדריכלות</span>
