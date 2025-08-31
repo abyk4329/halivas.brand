@@ -3,22 +3,6 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-const galleryImages = [
-  '/IMG_5280.PNG',
-  '/IMG_5281.PNG', 
-  '/IMG_5282.PNG',
-  '/IMG_5283.PNG',
-  '/IMG_5284.PNG',
-  '/IMG_5285.PNG',
-  '/IMG_5286.PNG',
-  '/IMG_5287.PNG',
-  '/IMG_5288.PNG',
-  '/IMG_5289.PNG',
-  '/IMG_5290.PNG',
-  '/IMG_5291.PNG',
-  '/IMG_5292.PNG'
-];
-
 export default function BusinessCard() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
@@ -73,6 +57,14 @@ export default function BusinessCard() {
           <p className="text-xl text-foreground mb-10 font-light leading-relaxed">
             מומחה באדריכלות, עיצוב פנים וייצור מטבחים מותאמים אישית
           </p>
+          <div className="flex justify-center mb-8">
+            <a
+              href="/gallery"
+              className="bg-secondary text-on-dark px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 mr-4"
+            >
+              צפה בגלריה
+            </a>
+          </div>
           <div className="flex justify-center flex-wrap gap-6">
             <span className="text-foreground font-medium tracking-wide">אדריכלות</span>
             <span className="text-foreground font-medium tracking-wide">עיצוב פנים</span>
@@ -83,28 +75,19 @@ export default function BusinessCard() {
 
       {/* Gallery Section */}
       <section className="py-20 px-4 bg-light-gray">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-sans font-medium text-ink text-center mb-16">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl font-sans font-medium text-ink mb-8">
             הפרויקטים שלנו
           </h2>
-          <div className="gallery-grid">
-            {galleryImages.map((image, index) => (
-              <div 
-                key={index}
-                className="gallery-item cursor-pointer hover:scale-105 transition-transform duration-300"
-                onClick={() => setSelectedImage(image)}
-              >
-                <Image
-                  src={image}
-                  alt={`פרויקט ${index + 1}`}
-                  fill
-                  className="object-cover transition-all duration-300 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300"></div>
-              </div>
-            ))}
-          </div>
+          <p className="text-xl text-foreground mb-12 font-light leading-relaxed">
+            גלריה דינמית עם הפרויקטים האחרונים שלנו מאינסטגרם
+          </p>
+          <a
+            href="/gallery"
+            className="inline-block bg-brand text-on-dark px-12 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+          >
+            צפה בגלריה המלאה
+          </a>
         </div>
       </section>
 
@@ -223,30 +206,6 @@ export default function BusinessCard() {
       <footer className="py-12 px-4 bg-ink text-on-dark text-center">
         <p className="font-light">&copy; 2025 עידן חליווה - אדריכלות ועיצוב. כל הזכויות שמורות.</p>
       </footer>
-
-            {/* Image Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-5xl max-h-full">
-            <Image
-              src={selectedImage}
-              alt="תמונה מוגדלת"
-              width={1000}
-              height={750}
-              className="object-contain max-h-[90vh] rounded-lg"
-            />
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 bg-white text-black rounded-full w-12 h-12 flex items-center justify-center font-bold hover:bg-gray-200 transition-colors shadow-lg"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
