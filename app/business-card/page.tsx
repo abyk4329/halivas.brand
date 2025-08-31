@@ -1,15 +1,19 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function BusinessCard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-blue-50">
       {/* Hero Section */}
       <section className="py-16 px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          <img
+          <Image
             src="/halivas-logo.png"
             alt="Halivas Logo"
-            className="w-32 h-auto mx-auto mb-8 drop-shadow-lg"
+            width={128}
+            height={128}
+            className="mx-auto mb-8 drop-shadow-lg"
           />
           <h1 className="text-5xl font-serif font-bold text-ink mb-4 drop-shadow-sm">
             עידן חליווה
