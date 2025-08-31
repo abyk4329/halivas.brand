@@ -1,23 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 /* Theme tokens */
 @theme {
-  --color-background: #FFFFFF;    /* רקע לבן בהיר */
-  --color-card: #F8F9FA;          /* כרטיסים אפורים בהירים */
-  --color-ink: #2D3748;           /* כותרות כהות */
+  --color-background: #FAFBFC;    /* רקע לבן-אפור בהיר */
+  --color-card: #FFFFFF;          /* כרטיסים לבנים */
+  --color-ink: #1A1D23;           /* כותרות כהות */
   --color-foreground: #4A5568;    /* טקסט רגיל */
   --color-muted-foreground: #718096; /* טקסט משני */
-  --color-brand: #4299E1;         /* כחול בהיר ל-CTA */
-  --color-accent: #63B3ED;        /* כחול עדין */
-  --color-secondary: #3182CE;     /* כחול כהה לכפתורים */
-  --color-ring: #E2E8F0;          /* גבולות בהירים */
+  --color-brand: #3B82F6;         /* כחול בהיר ל-CTA */
+  --color-accent: #60A5FA;        /* כחול עדין */
+  --color-secondary: #2563EB;     /* כחול כהה לכפתורים */
+  --color-ring: #E5E7EB;          /* גבולות בהירים */
   --color-on-dark: #FFFFFF;       /* טקסט על כהה */
-  --color-depth: #1A202C;         /* הדגשה כהה */
+  --color-depth: #111827;         /* הדגשה כהה */
+  --color-light-gray: #F9FAFB;    /* רקע עדין */
 
   --font-sans: "Assistant", ui-sans-serif, system-ui;
-  --font-serif: "Cormorant Garamond", serif;
-  --radius: 16px;  /* רדיוס גדול יותר למראה מודרני */
+  --font-serif: "Assistant", ui-sans-serif, system-ui;
+  --radius: 20px;  /* רדיוס גדול למראה מודרני */
+}
+
+/* Utilities */
+.container-balanced { max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
+.card { 
+  background: var(--color-card); 
+  border-radius: var(--radius); 
+  padding: 2rem; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  background: var(--color-light-gray);
 }
 
 /* Utilities קטנות */
