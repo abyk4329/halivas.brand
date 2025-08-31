@@ -104,7 +104,7 @@ export default function BusinessCard() {
             <div className="bg-card p-6 rounded-2xl shadow-lg">
               <h3 className="text-xl font-bold text-ink mb-4">עקוב אחרינו</h3>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/halivas.brand?igsh=MTh2dWRlbmdkOGxtaA=="
                 target="_blank"
                 className="text-accent hover:text-brand transition-colors text-lg"
               >
