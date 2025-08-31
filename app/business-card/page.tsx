@@ -92,24 +92,27 @@ export default function BusinessCard() {
             עם ניסיון של למעלה מ-15 שנה בתחום, אני מתמחה ביצירת חללים יפים ופונקציונליים שמשקפים את האישיות והצרכים של כל לקוח.
             מהתכנון הראשוני ועד למימוש הסופי - אני כאן כדי להפוך את החלום שלכם למציאות.
           </p>
-          <div className="flex justify-center mb-8">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 flex-wrap">
             <a
               href="/gallery"
-              className="bg-secondary text-on-dark px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 mr-4"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#8B5A3C] to-[#A67C52] text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-[#8B5A3C]/20"
             >
-              צפה בגלריה שלנו
+              <span className="text-lg">🖼️</span>
+              <span>גלריה</span>
             </a>
             <a
               href="/client-login"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 mr-4 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-blue-600/20"
             >
-              👤 אזור לקוחות
+              <span className="text-lg">👤</span>
+              <span>אזור לקוחות</span>
             </a>
             <a
               href="/admin-clients"
-              className="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-purple-600/20"
             >
-              ⚙️ ניהול לקוחות
+              <span className="text-lg">⚙️</span>
+              <span>ניהול לקוחות</span>
             </a>
           </div>
           <div className="flex justify-center flex-wrap gap-6">
@@ -197,45 +200,51 @@ export default function BusinessCard() {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 flex-wrap">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 flex-wrap">
             <button
               onClick={handleRefresh}
-              className="bg-gray-500 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-600/20"
             >
-              🔄 רענן דף
+              <span className="text-lg">🔄</span>
+              <span>רענן דף</span>
             </button>
             {showInstallButton && (
               <button
                 onClick={handleInstallClick}
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-green-600/20"
               >
-                📱 התקן כאפליקציה
+                <span className="text-lg">📱</span>
+                <span>התקן כאפליקציה</span>
               </button>
             )}
             <a
               href="tel:0544525927"
-              className="bg-green-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-emerald-600/20"
             >
-              📞 התקשר עכשיו
+              <span className="text-lg">📞</span>
+              <span>התקשר עכשיו</span>
             </a>
             <a
               href="mailto:idan@halivas.com"
-              className="bg-blue-500 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-indigo-600/20"
             >
-              ✉️ שלח מייל
+              <span className="text-lg">✉️</span>
+              <span>שלח מייל</span>
             </a>
             <a
               href="waze://?q=%D7%94%D7%9E%D7%97%D7%A7%D7%A8%205%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93"
-              className="bg-purple-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-orange-600/20"
             >
-              🗺️ נווט בווייז
+              <span className="text-lg">🗺️</span>
+              <span>נווט בווייז</span>
             </a>
             <a
               href="/api/vcard"
               download="HALIVAS.BRAND.vcf"
-              className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-slate-600 to-slate-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-slate-600/20"
             >
-              👤 שמור באנשי קשר
+              <span className="text-lg">👤</span>
+              <span>שמור באנשי קשר</span>
             </a>
             <button
               onClick={() => {
@@ -250,9 +259,10 @@ export default function BusinessCard() {
                   alert('הקישור הועתק ללוח!');
                 }
               }}
-              className="bg-teal-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-teal-600/20"
             >
-              📤 שתף כרטיס ביקור
+              <span className="text-lg">📤</span>
+              <span>שתף כרטיס ביקור</span>
             </button>
           </div>
         </div>

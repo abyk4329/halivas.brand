@@ -2,15 +2,43 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import KitchenStatusTracker from '../components/KitchenStatusTracker';
 
 interface Deal {
   id: string;
   type: string;
   description: string;
   price: number;
+  paid: number;
+  remaining: number;
   status: string;
   date: string;
+  estimatedDelivery: string;
+  actualDelivery: string | null;
+  delayReason: string | null;
   summary: string;
+}
+
+interface KitchenStatus {
+  currentPhase: string;
+  progress: number;
+  estimatedCompletion: string;
+  nextMilestone: string;
+  lastUpdate: string;
+  deliveryDate: string;
+  delayReason: string | null;
+  sketches: Array<{
+    id: string;
+    name: string;
+    url: string;
+    uploadedAt: string;
+    description: string;
+  }>;
+  updates: Array<{
+    date: string;
+    phase: string;
+    description: string;
+  }>;
 }
 
 interface Client {
@@ -18,6 +46,7 @@ interface Client {
   name: string;
   phone: string;
   email: string;
+  kitchenStatus?: KitchenStatus;
   deals: Deal[];
 }
 
@@ -122,6 +151,13 @@ export default function ClientDashboard() {
           </div>
         </div>
 
+        {/* Kitchen Status */}
+        {client.kitchenStatus && (
+          <div className="mb-8">
+            <KitchenStatusTracker kitchenStatus={client.kitchenStatus} />
+          </div>
+        )}
+
         {/* Deals */}
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-6">העסקאות שלי</h2>
@@ -157,6 +193,61 @@ export default function ClientDashboard() {
                       <p className="font-medium">{deal.id}</p>
                     </div>
                   </div>
+
+                  {/* Payment Status */}
+                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                    <h4 className="font-medium text-gray-900 mb-3">סטטוס תשלומים</h4>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div>
+                        <p className="text-sm text-gray-500">סכום כולל</p>
+                        <p className="text-lg font-bold text-gray-900">{formatPrice(deal.price)}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">שולם</p>
+                        <p className="text-lg font-bold text-green-600">{formatPrice(deal.paid)}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">נותר</p>
+                        <p className="text-lg font-bold text-red-600">{formatPrice(deal.remaining)}</p>
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className="bg-green-500 h-2 rounded-full"
+                          style={{ width: `${(deal.paid / deal.price) * 100}%` }}
+                        ></div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {((deal.paid / deal.price) * 100).toFixed(1)}% שולם
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Delivery Info */}
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <p className="text-sm text-gray-500">תאריך הספקה משוער</p>
+                      <p className="font-medium">{formatDate(deal.estimatedDelivery)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">תאריך הספקה בפועל</p>
+                      <p className="font-medium">
+                        {deal.actualDelivery ? formatDate(deal.actualDelivery) : 'טרם הושלם'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Delay Warning */}
+                  {deal.delayReason && (
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                      <div className="flex items-center mb-1">
+                        <span className="text-yellow-600 mr-2">⚠️</span>
+                        <span className="font-medium text-yellow-800">הודעת עיכוב</span>
+                      </div>
+                      <p className="text-yellow-700 text-sm">{deal.delayReason}</p>
+                    </div>
+                  )}
 
                   <div>
                     <p className="text-sm text-gray-500 mb-2">סיכום</p>

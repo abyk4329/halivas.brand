@@ -42,13 +42,15 @@ function writeClients(clients: Client[]) {
   }
 }
 
-// GET - קבלת פרטי לקוח לפי ת.ז.
+// GET - קבלת פרטי לקוח לפי ת.ז. או כל הלקוחות
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
 
   if (!id) {
-    return NextResponse.json({ error: 'נדרש מספר תעודת זהות' }, { status: 400 });
+    // החזרת כל הלקוחות אם לא צוין ID
+    const clients = readClients();
+    return NextResponse.json(clients);
   }
 
   const clients = readClients();

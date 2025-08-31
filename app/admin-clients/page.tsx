@@ -1,14 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import SketchUploader from '../components/SketchUploader';
 
 interface Deal {
   id: string;
   type: string;
   description: string;
   price: number;
+  paid: number;
+  remaining: number;
   status: string;
   date: string;
+  estimatedDelivery: string;
+  actualDelivery: string | null;
+  delayReason: string | null;
   summary: string;
 }
 
@@ -115,102 +121,194 @@ export default function AdminClients() {
               <h1 className="text-2xl font-bold text-gray-900">ניהול לקוחות - HALIVAS.BRAND</h1>
               <p className="text-gray-600">ניהול מסד הלקוחות והעסקאות</p>
             </div>
-            <button
-              onClick={() => setShowAddClient(true)}
-              className="bg-[#8B5A3C] text-white px-6 py-3 rounded-lg hover:bg-[#A67C52] transition-colors font-medium"
-            >
-              ➕ הוסף לקוח חדש
-            </button>
+            <div className="flex gap-3">
+              <a
+                href="/conversation-manager"
+                className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium"
+              >
+                💬 ניהול שיחות
+              </a>
+              <a
+                href="/meeting-manager"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              >
+                📅 ניהול פגישות
+              </a>
+              <button
+                onClick={() => setShowAddClient(true)}
+                className="bg-[#8B5A3C] text-white px-6 py-3 rounded-lg hover:bg-[#A67C52] transition-colors font-medium"
+              >
+                ➕ הוסף לקוח חדש
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Summary Cards */}
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <span className="text-2xl">👥</span>
+              </div>
+              <div className="mr-4">
+                <p className="text-sm text-gray-600">סך לקוחות</p>
+                <p className="text-2xl font-bold text-gray-900">{clients.length}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="p-2 bg-green-100 rounded-lg">
+                <span className="text-2xl">💰</span>
+              </div>
+              <div className="mr-4">
+                <p className="text-sm text-gray-600">סך הכנסות</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {formatPrice(clients.reduce((sum, client) =>
+                    sum + client.deals.reduce((dealSum, deal) => dealSum + deal.price, 0), 0
+                  ))}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="p-2 bg-yellow-100 rounded-lg">
+                <span className="text-2xl">⏳</span>
+              </div>
+              <div className="mr-4">
+                <p className="text-sm text-gray-600">עסקאות פעילות</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {clients.reduce((sum, client) =>
+                    sum + client.deals.filter(deal => deal.status === 'בתהליך').length, 0
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="p-2 bg-purple-100 rounded-lg">
+                <span className="text-2xl">✅</span>
+              </div>
+              <div className="mr-4">
+                <p className="text-sm text-gray-600">עסקאות הושלמו</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {clients.reduce((sum, client) =>
+                    sum + client.deals.filter(deal => deal.status === 'הושלם').length, 0
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Add/Edit Client Modal */}
         {showAddClient && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md">
-              <h2 className="text-xl font-bold mb-4">
-                {editingClient ? 'עריכת לקוח' : 'הוספת לקוח חדש'}
-              </h2>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="bg-white rounded-lg p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+              <div className="grid lg:grid-cols-2 gap-6">
+                {/* Client Form */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    תעודת זהות
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.id}
-                    onChange={(e) => setFormData({...formData, id: e.target.value.replace(/\D/g, '').slice(0, 9)})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
-                    required
-                  />
+                  <h2 className="text-xl font-bold mb-4">
+                    {editingClient ? 'עריכת לקוח' : 'הוספת לקוח חדש'}
+                  </h2>
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        תעודת זהות
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.id}
+                        onChange={(e) => setFormData({...formData, id: e.target.value.replace(/\D/g, '').slice(0, 9)})}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        שם מלא
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        טלפון
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        אימייל
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
+                      />
+                    </div>
+
+                    <div className="flex gap-3 pt-4">
+                      <button
+                        type="submit"
+                        className="flex-1 bg-[#8B5A3C] text-white py-2 px-4 rounded-lg hover:bg-[#A67C52] transition-colors"
+                      >
+                        שמור
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowAddClient(false);
+                          setEditingClient(null);
+                          setFormData({ id: '', name: '', phone: '', email: '' });
+                        }}
+                        className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-colors"
+                      >
+                        ביטול
+                      </button>
+                    </div>
+                  </form>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    שם מלא
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    טלפון
-                  </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    אימייל
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B5A3C] focus:border-transparent"
-                  />
-                </div>
-
-                <div className="flex gap-3 pt-4">
-                  <button
-                    type="submit"
-                    className="flex-1 bg-[#8B5A3C] text-white py-2 px-4 rounded-lg hover:bg-[#A67C52] transition-colors"
-                  >
-                    שמור
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowAddClient(false);
-                      setEditingClient(null);
-                      setFormData({ id: '', name: '', phone: '', email: '' });
-                    }}
-                    className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-colors"
-                  >
-                    ביטול
-                  </button>
-                </div>
-              </form>
+                {/* Sketch Uploader */}
+                {editingClient && (
+                  <div>
+                    <SketchUploader
+                      clientId={editingClient.id}
+                      onSketchUploaded={() => {
+                        // רענון רשימת הלקוחות לאחר העלאת סקיצה
+                        loadClients();
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        )}
-
-        {/* Clients List */}
+        )}        {/* Clients List */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-900">רשימת לקוחות ({clients.length})</h2>
@@ -237,12 +335,43 @@ export default function AdminClients() {
                           <div className="space-y-2">
                             {client.deals.map((deal) => (
                               <div key={deal.id} className="bg-gray-50 p-3 rounded">
-                                <div className="flex justify-between items-center">
+                                <div className="flex justify-between items-center mb-2">
                                   <div>
                                     <p className="font-medium">{deal.description}</p>
-                                    <p className="text-sm text-gray-600">{deal.type} • {deal.status}</p>
+                                    <p className="text-sm text-gray-600">{deal.type}</p>
                                   </div>
-                                  <p className="font-bold text-[#8B5A3C]">{formatPrice(deal.price)}</p>
+                                  <span className={`px-2 py-1 rounded text-xs ${
+                                    deal.status === 'הושלם' ? 'bg-green-100 text-green-800' :
+                                    deal.status === 'בתהליך' ? 'bg-blue-100 text-blue-800' :
+                                    'bg-gray-100 text-gray-800'
+                                  }`}>
+                                    {deal.status}
+                                  </span>
+                                </div>
+
+                                {/* Payment Progress */}
+                                <div className="mb-2">
+                                  <div className="flex justify-between text-sm mb-1">
+                                    <span>תשלומים: {formatPrice(deal.paid)} / {formatPrice(deal.price)}</span>
+                                    <span>{((deal.paid / deal.price) * 100).toFixed(0)}%</span>
+                                  </div>
+                                  <div className="w-full bg-gray-200 rounded-full h-2">
+                                    <div
+                                      className="bg-green-500 h-2 rounded-full"
+                                      style={{ width: `${(deal.paid / deal.price) * 100}%` }}
+                                    ></div>
+                                  </div>
+                                </div>
+
+                                {/* Delivery Info */}
+                                <div className="text-xs text-gray-500">
+                                  <p>הספקה משוערת: {new Date(deal.estimatedDelivery).toLocaleDateString('he-IL')}</p>
+                                  {deal.actualDelivery && (
+                                    <p>הספקה בפועל: {new Date(deal.actualDelivery).toLocaleDateString('he-IL')}</p>
+                                  )}
+                                  {deal.delayReason && (
+                                    <p className="text-yellow-600">עיכוב: {deal.delayReason}</p>
+                                  )}
                                 </div>
                               </div>
                             ))}

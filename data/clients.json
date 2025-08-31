@@ -4,14 +4,60 @@
     "name": "ישראל ישראלי",
     "phone": "050-1234567",
     "email": "israel@example.com",
+    "kitchenStatus": {
+      "currentPhase": "התקנה",
+      "progress": 75,
+      "estimatedCompletion": "2025-09-15",
+      "nextMilestone": "חיבור חשמל ואינסטלציה",
+      "lastUpdate": "2025-08-30",
+      "deliveryDate": "2025-09-20",
+      "delayReason": null,
+      "sketches": [
+        {
+          "id": "sketch_001",
+          "name": "תכנית מטבח ראשונית",
+          "url": "https://github.com/abyk4329/halivas.brand/blob/main/sketches/kitchen_001.jpg",
+          "uploadedAt": "2025-08-25",
+          "description": "תכנית ראשונית עם מדידות ומקום לארונות"
+        },
+        {
+          "id": "sketch_002",
+          "name": "הדמיית 3D סופית",
+          "url": "https://github.com/abyk4329/halivas.brand/blob/main/sketches/kitchen_3d_001.jpg",
+          "uploadedAt": "2025-08-28",
+          "description": "הדמיית 3D מלאה עם חומרים וצבעים"
+        }
+      ],
+      "updates": [
+        {
+          "date": "2025-08-25",
+          "phase": "ייצור",
+          "description": "הושלמו כל הארונות והמגירות"
+        },
+        {
+          "date": "2025-08-28",
+          "phase": "הובלה",
+          "description": "המטבח הובל בהצלחה לבית הלקוח"
+        },
+        {
+          "date": "2025-08-30",
+          "phase": "התקנה",
+          "description": "החלה התקנת הארונות והמשטחים"
+        }
+      ]
+    },
     "deals": [
       {
         "id": "deal_001",
         "type": "אדריכלות",
         "description": "תכנון בית פרטי ברמת גן",
         "price": 25000,
+        "paid": 25000,
+        "remaining": 0,
         "status": "הושלם",
         "date": "2025-01-15",
+        "estimatedDelivery": "2025-02-15",
+        "actualDelivery": "2025-02-10",
         "summary": "פגישה מוצלחת עם הלקוח. דנו בתכנית האדריכלית לבית 200 מ״ר. הלקוח אישר את התכנית הראשונית וחתם על חוזה."
       },
       {
@@ -19,9 +65,27 @@
         "type": "עיצוב פנים",
         "description": "עיצוב סלון וחדרי שינה",
         "price": 15000,
+        "paid": 7500,
+        "remaining": 7500,
         "status": "בתהליך",
         "date": "2025-02-01",
+        "estimatedDelivery": "2025-10-01",
+        "actualDelivery": null,
         "summary": "שיחת טלפון עם הלקוח. דנו בצרכים לעיצוב הפנים. הלקוח ביקש הצעת מחיר מפורטת."
+      },
+      {
+        "id": "deal_003",
+        "type": "ייצור מטבח",
+        "description": "מטבח מותאם אישית לבית חדש",
+        "price": 35000,
+        "paid": 17500,
+        "remaining": 17500,
+        "status": "בתהליך",
+        "date": "2025-06-01",
+        "estimatedDelivery": "2025-09-20",
+        "actualDelivery": null,
+        "delayReason": "עיכוב באספקת חומרים מיוחדים - צפוי להגיע בעוד 5 ימים",
+        "summary": "מטבח בהתקנה. הלקוח מרוצה מהתקדמות העבודה."
       }
     ]
   },
@@ -30,14 +94,54 @@
     "name": "שרה כהן",
     "phone": "052-9876543",
     "email": "sara@example.com",
+    "kitchenStatus": {
+      "currentPhase": "תכנון",
+      "progress": 30,
+      "estimatedCompletion": "2025-11-20",
+      "nextMilestone": "מדידות סופיות ואישור תכנית",
+      "lastUpdate": "2025-08-28",
+      "deliveryDate": "2025-11-25",
+      "delayReason": null,
+      "sketches": [
+        {
+          "id": "sketch_003",
+          "name": "סקיצה ראשונית",
+          "url": "https://github.com/abyk4329/halivas.brand/blob/main/sketches/kitchen_002.jpg",
+          "uploadedAt": "2025-08-20",
+          "description": "סקיצה ראשונית עם רעיונות עיצוביים"
+        }
+      ],
+      "updates": [
+        {
+          "date": "2025-08-20",
+          "phase": "פגישה ראשונית",
+          "description": "פגישה ראשונית ודין בצרכים"
+        },
+        {
+          "date": "2025-08-25",
+          "phase": "תכנון",
+          "description": "הכנת תכנית ראשונית"
+        },
+        {
+          "date": "2025-08-28",
+          "phase": "תכנון",
+          "description": "הצגת תכנית למטבח ללקוחה"
+        }
+      ]
+    },
     "deals": [
       {
-        "id": "deal_003",
+        "id": "deal_004",
         "type": "ייצור מטבח",
         "description": "מטבח מותאם אישית לבית חדש",
-        "price": 35000,
-        "status": "הושלם",
-        "date": "2025-01-20",
+        "price": 42000,
+        "paid": 12600,
+        "remaining": 29400,
+        "status": "בתהליך",
+        "date": "2025-08-20",
+        "estimatedDelivery": "2025-11-25",
+        "actualDelivery": null,
+        "delayReason": null,
         "summary": "פגישה בבית הלקוחה. מדדנו את המטבח ודנו בחומרים. הלקוחה בחרה בגרניט שחור וארונות לבנים."
       }
     ]
