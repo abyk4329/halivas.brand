@@ -3,45 +3,47 @@
 
 /* Theme tokens */
 @theme {
-  --color-background: #FAFBFC;    /* רקע לבן-אפור בהיר */
-  --color-card: #FFFFFF;          /* כרטיסים לבנים */
-  --color-ink: #1A1D23;           /* כותרות כהות */
-  --color-foreground: #4A5568;    /* טקסט רגיל */
-  --color-muted-foreground: #718096; /* טקסט משני */
-  --color-brand: #3B82F6;         /* כחול בהיר ל-CTA */
-  --color-accent: #60A5FA;        /* כחול עדין */
-  --color-secondary: #2563EB;     /* כחול כהה לכפתורים */
-  --color-ring: #E5E7EB;          /* גבולות בהירים */
+  --color-background: #FFFFFF;    /* רקע לבן טהור */
+  --color-card: #F8F9FA;          /* כרטיסים אפורים בהירים מאוד */
+  --color-ink: #1A1A1A;           /* שחור כהה לאלגנטי */
+  --color-foreground: #4A4A4A;    /* אפור כהה לטקסט */
+  --color-muted-foreground: #6B7280; /* אפור בינוני */
+  --color-brand: #8B5A3C;         /* חום נחושת יוקרתי */
+  --color-accent: #D4AF37;        /* זהב עדין */
+  --color-secondary: #2D2D2D;     /* שחור אפור */
+  --color-ring: #E5E5E5;          /* גבולות עדינים */
   --color-on-dark: #FFFFFF;       /* טקסט על כהה */
-  --color-depth: #111827;         /* הדגשה כהה */
-  --color-light-gray: #F9FAFB;    /* רקע עדין */
+  --color-depth: #111111;         /* שחור עמוק */
+  --color-light-gray: #F5F5F5;    /* אפור בהיר מאוד */
 
   --font-sans: "Assistant", ui-sans-serif, system-ui;
   --font-serif: "Assistant", ui-sans-serif, system-ui;
-  --radius: 20px;  /* רדיוס גדול למראה מודרני */
+  --radius: 16px;  /* רדיוס עדין */
 }
 
 /* Utilities */
 .container-balanced { max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
-.card { 
-  background: var(--color-card); 
-  border-radius: var(--radius); 
-  padding: 2rem; 
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-ring);
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .gallery-item {
-  aspect-ratio: 1;
+  aspect-ratio: 4/3;
   border-radius: var(--radius);
   overflow: hidden;
   position: relative;
   background: var(--color-light-gray);
+  border: 1px solid var(--color-ring);
 }
 
 /* Utilities קטנות */

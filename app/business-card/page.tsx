@@ -63,26 +63,20 @@ export default function BusinessCard() {
           <Image
             src="/halivas-logo.png"
             alt="Halivas Logo"
-            width={120}
-            height={120}
-            className="mx-auto mb-8 rounded-full shadow-lg"
+            width={100}
+            height={100}
+            className="mx-auto mb-12"
           />
-          <h1 className="text-6xl font-sans font-bold text-ink mb-6 tracking-tight">
+          <h1 className="text-5xl font-sans font-medium text-ink mb-6 tracking-tight">
             עידן חליווה
           </h1>
           <p className="text-xl text-foreground mb-10 font-light leading-relaxed">
             מומחה באדריכלות, עיצוב פנים וייצור מטבחים מותאמים אישית
           </p>
-          <div className="flex justify-center flex-wrap gap-4">
-            <span className="bg-brand text-on-dark px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow">
-              🏠 אדריכלות
-            </span>
-            <span className="bg-accent text-on-dark px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow">
-              🛋️ עיצוב פנים
-            </span>
-            <span className="bg-secondary text-on-dark px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow">
-              🍳 ייצור מטבחים
-            </span>
+          <div className="flex justify-center flex-wrap gap-6">
+            <span className="text-foreground font-medium tracking-wide">אדריכלות</span>
+            <span className="text-foreground font-medium tracking-wide">עיצוב פנים</span>
+            <span className="text-foreground font-medium tracking-wide">ייצור מטבחים</span>
           </div>
         </div>
       </section>
@@ -90,7 +84,7 @@ export default function BusinessCard() {
       {/* Gallery Section */}
       <section className="py-20 px-4 bg-light-gray">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-sans font-bold text-ink text-center mb-16">
+          <h2 className="text-4xl font-sans font-medium text-ink text-center mb-16">
             הפרויקטים שלנו
           </h2>
           <div className="gallery-grid">
@@ -104,9 +98,10 @@ export default function BusinessCard() {
                   src={image}
                   alt={`פרויקט ${index + 1}`}
                   fill
-                  className="object-cover hover:brightness-110 transition-all"
+                  className="object-cover transition-all duration-300 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300"></div>
               </div>
             ))}
           </div>
@@ -116,27 +111,24 @@ export default function BusinessCard() {
       {/* Services Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-sans font-bold text-ink text-center mb-16">
+          <h2 className="text-4xl font-sans font-medium text-ink text-center mb-16">
             השירותים שלנו
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card text-center hover:shadow-xl transition-shadow">
-              <div className="text-6xl mb-6">🏠</div>
-              <h3 className="text-2xl font-bold text-ink mb-4">אדריכלות</h3>
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="card text-center">
+                            <h3 className="text-2xl font-medium text-ink mb-6">אדריכלות</h3>
               <p className="text-foreground leading-relaxed">
                 תכנון אדריכלי מקצועי לבתים ומבנים, עם דגש על פונקציונליות ואסתטיקה מודרנית.
               </p>
             </div>
-            <div className="card text-center hover:shadow-xl transition-shadow">
-              <div className="text-6xl mb-6">🛋️</div>
-              <h3 className="text-2xl font-bold text-ink mb-4">עיצוב פנים</h3>
+            <div className="card text-center">
+                            <h3 className="text-2xl font-medium text-ink mb-6">עיצוב פנים</h3>
               <p className="text-foreground leading-relaxed">
                 עיצוב חללים פנימיים יפים ומותאמים אישית לכל חדר בבית, עם סגנון מינימליסטי.
               </p>
             </div>
-            <div className="card text-center hover:shadow-xl transition-shadow">
-              <div className="text-6xl mb-6">🍳</div>
-              <h3 className="text-2xl font-bold text-ink mb-4">ייצור מטבחים</h3>
+            <div className="card text-center">
+                            <h3 className="text-2xl font-medium text-ink mb-6">ייצור מטבחים</h3>
               <p className="text-foreground leading-relaxed">
                 מטבחים מותאמים אישית באיכות גבוהה, עם חומרים מתקדמים ועיצוב מודרני ונקי.
               </p>
@@ -148,63 +140,63 @@ export default function BusinessCard() {
       {/* Contact Section */}
       <section className="py-20 px-4 bg-light-gray">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-sans font-bold text-ink mb-12">
+          <h2 className="text-4xl font-sans font-medium text-ink mb-12">
             צור קשר
           </h2>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="card text-center">
-              <h3 className="text-xl font-bold text-ink mb-6">פרטי התקשרות</h3>
-              <div className="space-y-3">
-                <p className="text-foreground">📞 <strong>054-4525927</strong></p>
-                <p className="text-foreground">✉️ <strong>idan@halivas.com</strong></p>
-                <p className="text-foreground">📍 המחקר 5, אשדוד</p>
+              <h3 className="text-xl font-medium text-ink mb-6">פרטי התקשרות</h3>
+              <div className="space-y-4">
+                <p className="text-foreground font-medium">054-4525927</p>
+                <p className="text-foreground font-medium">idan@halivas.com</p>
+                <p className="text-foreground">המחקר 5, אשדוד</p>
               </div>
             </div>
             <div className="card text-center">
-              <h3 className="text-xl font-bold text-ink mb-6">עקוב אחרינו</h3>
+              <h3 className="text-xl font-medium text-ink mb-6">עקוב אחרינו</h3>
               <a
                 href="https://www.instagram.com/halivas.brand?igsh=MTh2dWRlbmdkOGxtaA=="
                 target="_blank"
-                className="inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all"
+                className="inline-block text-foreground hover:text-ink transition-colors font-medium"
               >
-                📷 Instagram
+                Instagram
               </a>
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 flex-wrap">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 flex-wrap">
             {showInstallButton && (
               <button
                 onClick={handleInstallClick}
-                className="bg-green-500 text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                className="bg-brand text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
               >
-                📱 התקן כאפליקציה
+                התקן כאפליקציה
               </button>
             )}
             <a
               href="tel:0544525927"
-              className="bg-brand text-on-dark px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-brand text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
             >
-              📞 התקשר עכשיו
+              התקשר עכשיו
             </a>
             <a
               href="mailto:idan@halivas.com"
-              className="bg-secondary text-on-dark px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-secondary text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
             >
-              ✉️ שלח מייל
+              שלח מייל
             </a>
             <a
               href="waze://?q=%D7%94%D7%9E%D7%97%D7%A7%D7%A8%205%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93"
-              className="bg-accent text-on-dark px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-accent text-depth px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
             >
-              🗺️ נווט בווייז
+              נווט בווייז
             </a>
             <a
               href="/api/vcard"
               download="Idan_Haliva.vcf"
-              className="bg-accent text-on-dark px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-accent text-depth px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
             >
-              💾 שמור באנשי קשר
+              שמור באנשי קשר
             </a>
             <button
               onClick={() => {
@@ -219,9 +211,9 @@ export default function BusinessCard() {
                   alert('הקישור הועתק ללוח!');
                 }
               }}
-              className="bg-secondary text-on-dark px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              className="bg-secondary text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
             >
-              📤 שתף כרטיס ביקור
+              שתף כרטיס ביקור
             </button>
           </div>
         </div>
@@ -232,23 +224,23 @@ export default function BusinessCard() {
         <p className="font-light">&copy; 2025 עידן חליווה - אדריכלות ועיצוב. כל הזכויות שמורות.</p>
       </footer>
 
-      {/* Image Modal */}
+            {/* Image Modal */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-4xl max-h-full">
+          <div className="relative max-w-5xl max-h-full">
             <Image
               src={selectedImage}
               alt="תמונה מוגדלת"
-              width={800}
-              height={600}
+              width={1000}
+              height={750}
               className="object-contain max-h-[90vh] rounded-lg"
             />
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 bg-white text-black rounded-full w-10 h-10 flex items-center justify-center font-bold hover:bg-gray-200 transition-colors"
+              className="absolute top-4 right-4 bg-white text-black rounded-full w-12 h-12 flex items-center justify-center font-bold hover:bg-gray-200 transition-colors shadow-lg"
             >
               ×
             </button>
