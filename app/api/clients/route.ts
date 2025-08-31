@@ -4,6 +4,24 @@ import path from 'path';
 
 const clientsFilePath = path.join(process.cwd(), 'data', 'clients.json');
 
+interface Deal {
+  id: string;
+  type: string;
+  description: string;
+  price: number;
+  status: string;
+  date: string;
+  summary: string;
+}
+
+interface Client {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  deals: Deal[];
+}
+
 // קריאת נתוני הלקוחות
 function readClients() {
   try {
@@ -16,7 +34,7 @@ function readClients() {
 }
 
 // כתיבת נתוני הלקוחות
-function writeClients(clients: any[]) {
+function writeClients(clients: Client[]) {
   try {
     fs.writeFileSync(clientsFilePath, JSON.stringify(clients, null, 2));
   } catch (error) {
@@ -34,7 +52,7 @@ export async function GET(request: NextRequest) {
   }
 
   const clients = readClients();
-  const client = clients.find((c: any) => c.id === id);
+  const client = clients.find((c: Client) => c.id === id);
 
   if (!client) {
     return NextResponse.json({ error: 'לקוח לא נמצא' }, { status: 404 });
@@ -54,7 +72,7 @@ export async function POST(request: NextRequest) {
     }
 
     const clients = readClients();
-    const existingClientIndex = clients.findIndex((c: any) => c.id === id);
+    const existingClientIndex = clients.findIndex((c: Client) => c.id === id);
 
     if (existingClientIndex >= 0) {
       // עדכון לקוח קיים

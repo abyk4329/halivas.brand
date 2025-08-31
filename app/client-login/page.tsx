@@ -25,7 +25,8 @@ export default function ClientLogin() {
       } else {
         setError(data.error || 'שגיאה בהתחברות');
       }
-    } catch (err) {
+    } catch (error) {
+      console.error('Login error:', error);
       setError('שגיאה בחיבור לשרת');
     } finally {
       setLoading(false);
