@@ -1,7 +1,7 @@
 {
-  "name": "כרטיס ביקור - עידן חליווה",
-  "short_name": "חליווה",
-  "description": "כרטיס ביקור דיגיטלי של עידן חליווה - אדריכלות, עיצוב פנים וייצור מטבחים",
+  "name": "HALIVAS.BRAND - כרטיס ביקור דיגיטלי",
+  "short_name": "HALIVAS.BRAND",
+  "description": "כרטיס ביקור דיגיטלי של HALIVAS.BRAND - אדריכלות, עיצוב פנים וייצור מטבחים",
   "start_url": "/business-card",
   "display": "standalone",
   "background_color": "#FFFFFF",

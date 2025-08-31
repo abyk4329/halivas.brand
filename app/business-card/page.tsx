@@ -78,15 +78,15 @@ export default function BusinessCard() {
           <Image
             src="/halivas-logo.png"
             alt="Halivas Logo"
-            width={100}
-            height={100}
+            width={200}
+            height={200}
             className="mx-auto mb-12"
           />
           <h1 className="text-5xl font-sans font-medium text-ink mb-6 tracking-tight">
-            עידן חליווה
+            HALIVAS.BRAND
           </h1>
           <p className="text-xl text-foreground mb-10 font-light leading-relaxed">
-            מומחה באדריכלות, עיצוב פנים וייצור מטבחים מותאמים אישית
+            עידן חליווה - מומחה באדריכלות, עיצוב פנים וייצור מטבחים מותאמים אישית
           </p>
           <p className="text-lg text-foreground mb-8 font-light leading-relaxed max-w-2xl mx-auto">
             עם ניסיון של למעלה מ-15 שנה בתחום, אני מתמחה ביצירת חללים יפים ופונקציונליים שמשקפים את האישיות והצרכים של כל לקוח.
@@ -97,7 +97,7 @@ export default function BusinessCard() {
               href="/gallery"
               className="bg-secondary text-on-dark px-6 py-3 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 mr-4"
             >
-              צפה בגלריה
+              צפה בגלריה שלנו
             </a>
           </div>
           <div className="flex justify-center flex-wrap gap-6">
@@ -112,7 +112,7 @@ export default function BusinessCard() {
       <section className="py-20 px-4 bg-light-gray">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl font-sans font-medium text-ink mb-8">
-            הפרויקטים שלנו
+            הפרויקטים שלנו - HALIVAS.BRAND
           </h2>
           <p className="text-xl text-foreground mb-12 font-light leading-relaxed">
             גלריה דינמית עם הפרויקטים האחרונים שלנו מאינסטגרם
@@ -121,7 +121,7 @@ export default function BusinessCard() {
             href="/gallery"
             className="inline-block bg-brand text-on-dark px-12 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
           >
-            צפה בגלריה המלאה
+            צפה בגלריה המלאה שלנו
           </a>
         </div>
       </section>
@@ -130,7 +130,7 @@ export default function BusinessCard() {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-sans font-medium text-ink text-center mb-16">
-            השירותים שלנו
+            השירותים שלנו - HALIVAS.BRAND
           </h2>
           <div className="grid md:grid-cols-3 gap-12">
             <div className="card text-center">
@@ -162,7 +162,7 @@ export default function BusinessCard() {
       <section className="py-20 px-4 bg-light-gray">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-sans font-medium text-ink mb-12">
-            צור קשר
+            צור קשר עם HALIVAS.BRAND
           </h2>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="card text-center">
@@ -188,42 +188,42 @@ export default function BusinessCard() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 flex-wrap">
             <button
               onClick={handleRefresh}
-              className="bg-gray-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+              className="bg-gray-500 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              רענן דף
+              🔄 רענן דף
             </button>
             {showInstallButton && (
               <button
                 onClick={handleInstallClick}
-                className="bg-brand text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
               >
-                התקן כאפליקציה
+                📱 התקן כאפליקציה
               </button>
             )}
             <a
               href="tel:0544525927"
-              className="bg-brand text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+              className="bg-green-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              התקשר עכשיו
+              📞 התקשר עכשיו
             </a>
             <a
               href="mailto:idan@halivas.com"
-              className="bg-secondary text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+              className="bg-blue-500 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              שלח מייל
+              ✉️ שלח מייל
             </a>
             <a
               href="waze://?q=%D7%94%D7%9E%D7%97%D7%A7%D7%A8%205%2C%20%D7%90%D7%A9%D7%93%D7%95%D7%93"
-              className="bg-accent text-depth px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+              className="bg-purple-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              נווט בווייז
+              🗺️ נווט בווייז
             </a>
             <a
               href="/api/vcard"
-              download="Idan_Haliva.vcf"
-              className="bg-accent text-depth px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+              download="HALIVAS.BRAND.vcf"
+              className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              שמור באנשי קשר
+              👤 שמור באנשי קשר
             </a>
             <button
               onClick={() => {
@@ -238,9 +238,9 @@ export default function BusinessCard() {
                   alert('הקישור הועתק ללוח!');
                 }
               }}
-              className="bg-secondary text-on-dark px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105"
+              className="bg-teal-600 text-white px-8 py-4 rounded-lg font-medium shadow-sm hover:shadow-md transition-all hover:scale-105 flex items-center gap-2"
             >
-              שתף כרטיס ביקור
+              📤 שתף כרטיס ביקור
             </button>
           </div>
         </div>
@@ -248,7 +248,7 @@ export default function BusinessCard() {
 
       {/* Footer */}
       <footer className="py-12 px-4 bg-ink text-on-dark text-center">
-        <p className="font-light">&copy; 2025 עידן חליווה - אדריכלות ועיצוב. כל הזכויות שמורות.</p>
+        <p className="font-light">&copy; 2025 HALIVAS.BRAND - אדריכלות ועיצוב. כל הזכויות שמורות.</p>
       </footer>
     </div>
   );

@@ -75,11 +75,11 @@ export default function GalleryPage() {
       {/* Header */}
       <div className="bg-gradient-to-b from-[#8B5A3C] to-[#A67C52] text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">גלריה דינמית</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">גלריה - HALIVAS.BRAND</h1>
           <p className="text-xl opacity-90 mb-6">הפרויקטים האחרונים שלנו מאינסטגרם</p>
           <p className="text-lg opacity-80 max-w-3xl mx-auto">
             כאן תוכלו לראות את העבודות האחרונות שלנו - מטבחים מותאמים אישית, עיצובי פנים יוקרתיים ואדריכלות מודרנית.
-            הגלריה מתעדכנת אוטומטית עם כל פוסט חדש באינסטגרם שלנו.
+            הגלריה מתעדכנת אוטומטית עם כל פוסט חדש באינסטגרם של HALIVAS.BRAND.
           </p>
         </div>
       </div>
@@ -161,7 +161,7 @@ export default function GalleryPage() {
             href="/business-card"
             className="inline-block px-8 py-3 bg-[#8B5A3C] text-white rounded-lg hover:bg-[#A67C52] transition-colors font-medium"
           >
-            חזרה לכרטיס הביקור
+            חזרה ל-HALIVAS.BRAND
           </a>
         </div>
       </div>
